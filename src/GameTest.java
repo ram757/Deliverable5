@@ -337,7 +337,7 @@ public class GameTest
     {
         String item = "cats";
         
-        when(mockPlayer.hasItem(item)).thenReturn(true);
+        when(mockPlayer.hasItem(item)).thenReturn(false);
         
         Game game = new Game(mockPlayer, mockHouse);
         
