@@ -7,6 +7,10 @@ public class EscapeTheGameTest
 {
 
     @Test
+    /*
+     * Test that running the introduction method will work
+     * properly
+     */
     public void testRunIntroduction()
     {
         EscapeTheGame game = new EscapeTheGame();
