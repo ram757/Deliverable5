@@ -13,7 +13,6 @@ public class EscapeTheGame
     
 
     
-    
     public int[] parseDimensionsFromString(String dimensions)
     {
         int[] toReturn = new int[2];
@@ -56,7 +55,6 @@ public class EscapeTheGame
         }
     }
 
-    
     public static void main(String[] args)
     {
         System.out.println("Insert title here...");
@@ -64,6 +62,7 @@ public class EscapeTheGame
         EscapeTheGame escapeGame = new EscapeTheGame();
         
         escapeGame.runIntroduction("Bob");
+        
 
         
     }
