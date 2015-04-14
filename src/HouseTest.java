@@ -275,5 +275,145 @@ public class HouseTest
         assertFalse(returnedValue);
     }
     
+    @Test
+    /*
+     * Test that peekNorth() returns proper String if there is a room 
+     * to the north of the current room
+     */
+    public void testPeekNorthToExisting()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+        
+        String expectedString = peekInfo + (row - 1) + col;
+        String returnedString = house.peekNorth();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peekSouth() returns proper String if there is a room 
+     * to the south of the current room
+     */
+    public void testPeekSouthToExisting()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+        
+        String expectedString = peekInfo + (row + 1) + col;
+        String returnedString = house.peekSouth();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peekEast() returns proper String if there is a room 
+     * to the east of the current room
+     */
+    public void testPeekEastToExisting()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+        
+        String expectedString = peekInfo + row + (col + 1);
+        String returnedString = house.peekEast();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peekWest() returns proper String if there is a room 
+     * to the west of the current room
+     */
+    public void testPeekWestToExisting()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+        
+        String expectedString = peekInfo + row + (col - 1);
+        String returnedString = house.peekWest();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peekNorth() returns null if there is no room
+     * to the north of the current room
+     */
+    public void testPeekNorthToNull()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(nullGameboard, row, col, 0, 0);
+
+        String returnedString = house.peekNorth();
+        
+        assertNull(returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peekSouth() returns null if there is no room
+     * to the south of the current room
+     */
+    public void testPeekSouthToNull()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(nullGameboard, row, col, 0, 0);
+
+        String returnedString = house.peekSouth();
+        
+        assertNull(returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peekEast() returns null if there is no room
+     * to the east of the current room
+     */
+    public void testPeekEastToNull()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(nullGameboard, row, col, 0, 0);
+
+        String returnedString = house.peekEast();
+        
+        assertNull(returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peekWest() returns null if there is no room
+     * to the west of the current room
+     */
+    public void testPeekWestToNull()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(nullGameboard, row, col, 0, 0);
+
+        String returnedString = house.peekWest();
+        
+        assertNull(returnedString);
+    }
+
     
 }

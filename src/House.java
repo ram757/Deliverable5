@@ -104,6 +104,46 @@ public class House
         }
         return false;
     }
+    
+    public String peekNorth()
+    {
+        int peek = _rowLoc - 1;
+        if(peek >= 0 && _floorPlan[peek][_colLoc] != null)
+        {
+            return _floorPlan[peek][_colLoc].peekInRoom();
+        }
+        return null;
+    }
+    
+    public String peekSouth()
+    {
+        int peek = _rowLoc + 1;
+        if(peek < _floorPlan.length && _floorPlan[peek][_colLoc] != null)
+        {
+            return _floorPlan[peek][_colLoc].peekInRoom();
+        }
+        return null;
+    }
+    
+    public String peekEast()
+    {
+        int peek = _colLoc + 1;
+        if(peek < _floorPlan[_rowLoc].length && _floorPlan[_rowLoc][peek] != null)
+        {
+            return _floorPlan[_rowLoc][peek].peekInRoom();
+        }
+        return null;
+    }
+    
+    public String peekWest()
+    {
+        int peek = _colLoc - 1;
+        if(peek >= 0 && _floorPlan[_rowLoc][peek] != null)
+        {
+            return _floorPlan[_rowLoc][peek].peekInRoom();
+        }
+        return null;
+    }
  
     
 }
