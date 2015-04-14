@@ -6,7 +6,9 @@ import org.junit.Test;
 import org.mockito.*;
 import org.junit.Before;
 
-
+/* RoomTest Class
+ *     Test cases used to develop the Room Class through TDD
+ */
 public class RoomTest
 {
     @Mock
@@ -28,6 +30,9 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the constructor produces Room object given no trap
+     */
     public void testConstructorWithNoItemTrap()
     {
         Room room = new Room(description, peekDescription);
@@ -36,6 +41,9 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the constructor produces Room object given a trap
+     */
     public void testConstructorWithItemTrap()
     {
         Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
@@ -44,6 +52,9 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the hasItem() method and verify that the expected response is returned
+     */
     public void testRoomHasItem()
     {
         Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
@@ -54,6 +65,9 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the hasTrap() method and verify that the expected response is returned
+     */
     public void testRoomHasTrap()
     {
         Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
@@ -64,6 +78,10 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the getItem() method given that the method is only called once
+     * and verify that the correct output is produced
+     */
     public void testRoomGetExistingItemOnce()
     {
         String itemString = "cats";
@@ -77,6 +95,10 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the getItem() method given that the method is called a second time
+     * and verify that the item is correctly "removed" from the Room
+     */
     public void testRoomGetExistingItemTwice()
     {
         String itemString = "cats";
@@ -92,6 +114,9 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test getItemUsable() method given that there is an itemUsable
+     */
     public void testRoomGetItemUsable()
     {
         Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
@@ -103,6 +128,10 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the getTrap() method given that the Room has a trap and verify 
+     * the correct output
+     */
     public void testRoomWithTrapGetTrap()
     {
         Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
@@ -111,6 +140,10 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the getTrap() method given that the Room does not have a trap 
+     * and verify the correct output
+     */
     public void testRoomWithoutTrapGetTrap()
     {
         Room room = new Room(description, peekDescription);
@@ -119,6 +152,10 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the getRoomInfo() method and verify it returns the description 
+     * of the Room
+     */
     public void testRoomGetRoomInfo()
     {
         Room room = new Room(description, peekDescription);
@@ -130,6 +167,10 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the peekInRoom() method and verify that it produces the 
+     * "peek" information of that room
+     */
     public void testRoomPeekInRoom()
     {
         Room room = new Room(description, peekDescription);
@@ -141,6 +182,10 @@ public class RoomTest
     }
     
     @Test
+    /*
+     * Test the toString() method given that the Room has no trap and 
+     * no item in it and verify that it produces the expected response
+     */
     public void testRoomToStringWithoutItemAndTrap()
     {
         Room room = new Room(description, peekDescription);
@@ -152,8 +197,11 @@ public class RoomTest
         assertEquals(expectedString, returnedString);
     }
     
-    
     @Test
+    /*
+     * Test the toString() method given that the Room has an Item and 
+     * a Trap and verify that the correct response is produced
+     */
     public void testRoomToStringWithItemAndTrap()
     {
         String trapString = "Eaten by cats";
@@ -174,10 +222,5 @@ public class RoomTest
         
         assertEquals(expectedString, returnedString);
     }
-    
-    
-    
-    
-    
 
 }
