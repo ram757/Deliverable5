@@ -144,6 +144,50 @@ public class House
         }
         return null;
     }
- 
+    
+    public boolean moveNorth()
+    {
+        int move = _rowLoc - 1;
+        if(move >= 0 && _floorPlan[move][_colLoc] != null)
+        {
+            _rowLoc = move;
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean moveSouth()
+    {
+        int move = _rowLoc + 1;
+        if(move < _floorPlan.length && _floorPlan[move][_colLoc] != null)
+        {
+            _rowLoc = move;
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean moveEast()
+    {
+        int move = _colLoc + 1;
+        if(move < _floorPlan[_rowLoc].length && _floorPlan[_rowLoc][move] != null)
+        {
+            _colLoc = move;
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean moveWest()
+    {
+        int move = _colLoc - 1;
+        if(move >= 0 && _floorPlan[_rowLoc][move] != null)
+        {
+            _colLoc = move;
+            return true;
+        }
+        return false;
+    }
+
     
 }

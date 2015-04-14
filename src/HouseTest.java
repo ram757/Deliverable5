@@ -26,6 +26,7 @@ public class HouseTest
     String roomInfo;
     String itemUsable;
     String peekInfo;
+    String roomToString;
     
     @Before
     /*
@@ -45,6 +46,7 @@ public class HouseTest
         roomInfo = "This is room: ";
         itemUsable = "cats";
         peekInfo = "This is peeking room: ";
+        roomToString = "To String of room: ";
         
         //Initialize Mocked trap
         trap = Mockito.mock(Trap.class);
@@ -69,7 +71,7 @@ public class HouseTest
                 when(gameboard[i][j].hasItem()).thenReturn(true);
                 when(gameboard[i][j].getItemUsable()).thenReturn(itemUsable);
                 when(gameboard[i][j].peekInRoom()).thenReturn(peekInfo + i + j);
-                when(gameboard[i][j].toString()).thenReturn(gameboard[i][j].getRoomInfo());
+                when(gameboard[i][j].toString()).thenReturn(roomToString + i + j);
             }
         }
     }
@@ -133,14 +135,18 @@ public class HouseTest
     
     @Test
     /*
-     * Test that the House of null rooms returns null when trying
+     * Test that the House of null rooms returns expected String when trying
      * to get room information
      */
     public void testHouseGetCurrentRoomInfoAtNull()
     {
         House house = new House(nullGameboard);
+        String expectedString = "Somehow you worked your way through a " +
+                                "portal to hell.  Goodluck getting out.";
         
-        assertNull(house.getCurrentRoomInfo());
+        String returnedString = house.getCurrentRoomInfo();
+        
+        assertEquals(expectedString, returnedString);
     }
     
     @Test
@@ -224,7 +230,7 @@ public class HouseTest
      */
     public void testLookInCurrentRoomThatIsNull()
     {
-        House house = new House(gameboard);
+        House house = new House(nullGameboard);
         
         Item returnedItem = house.lookInCurrentRoom();
         
@@ -415,5 +421,140 @@ public class HouseTest
         assertNull(returnedString);
     }
 
+    @Test
+    /*
+     * Test that moveNorth() returns proper boolean if there is a room 
+     * to the north of the current room
+     */
+    public void testMoveNorthExisting()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+
+        boolean returnedValue = house.moveNorth();
+        
+        assertTrue(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that moveSouth() returns proper boolean if there is a room 
+     * to the south of the current room
+     */
+    public void testMoveSouthExisting()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+
+        boolean returnedValue = house.moveSouth();
+        
+        assertTrue(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that moveEast() returns proper boolean if there is a room 
+     * to the east of the current room
+     */
+    public void testMoveEastExisting()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+
+        boolean returnedValue = house.moveEast();
+        
+        assertTrue(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that moveWest() returns proper boolean if there is a room 
+     * to the west of the current room
+     */
+    public void testMoveWestExisting()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+
+        boolean returnedValue = house.moveWest();
+        
+        assertTrue(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that moveNorth() returns proper boolean if there is NOT a room 
+     * to the north of the current room
+     */
+    public void testMoveNorthToNull()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(nullGameboard, row, col, 0, 0);
+
+        boolean returnedValue = house.moveNorth();
+        
+        assertFalse(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that moveSouth() returns proper boolean if there is NOT a room 
+     * to the south of the current room
+     */
+    public void testMoveSouthToNull()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(nullGameboard, row, col, 0, 0);
+
+        boolean returnedValue = house.moveSouth();
+        
+        assertFalse(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that moveWest() returns proper boolean if there is NOT a room 
+     * to the west of the current room
+     */
+    public void testMoveWestToNull()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(nullGameboard, row, col, 0, 0);
+
+        boolean returnedValue = house.moveWest();
+        
+        assertFalse(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that moveEast() returns proper boolean if there is NOT a room 
+     * to the east of the current room
+     */
+    public void testMoveEastToNull()
+    {
+        int row = 2;
+        int col = 2;
+        
+        House house = new House(nullGameboard, row, col, 0, 0);
+
+        boolean returnedValue = house.moveEast();
+        
+        assertFalse(returnedValue);
+    }
     
 }
