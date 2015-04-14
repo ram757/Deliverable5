@@ -557,4 +557,32 @@ public class HouseTest
         assertFalse(returnedValue);
     }
     
+    @Test
+    /*
+     * Test that checkForEndRoom() properly returns false when not on the 
+     * ending cell
+     */
+    public void testCheckForEndRoomNotAtEnd()
+    {
+        House house = new House(gameboard, startRow, startCol, endRow, endCol);
+        
+        boolean returnedValue = house.checkForEndRoom();
+        
+        assertFalse(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that checkForEndRoom() properly returns true when at the 
+     * ending cell
+     */
+    public void testCheckForEndRoomAtEnd()
+    {
+        House house = new House(gameboard, endRow, endCol, endRow, endCol);
+        
+        boolean returnedValue = house.checkForEndRoom();
+        
+        assertTrue(returnedValue);
+    }
+    
 }

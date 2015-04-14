@@ -188,6 +188,15 @@ public class House
         }
         return false;
     }
-
+    
+    public boolean checkForEndRoom()
+    {
+        if(_colLoc == _endCol && _rowLoc == _endRow)
+        {
+            return true;
+        }
+        return false;
+    }
+ 
     
 }
