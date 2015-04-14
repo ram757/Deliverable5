@@ -92,5 +92,18 @@ public class House
         return null;
     }
     
-
+    public boolean canUseItemHere(String itemName)
+    {
+        if(_floorPlan[_rowLoc][_colLoc] != null)
+        {
+            String itemUsable = _floorPlan[_rowLoc][_colLoc].getItemUsable();
+            if(itemUsable != null && itemUsable.equalsIgnoreCase(itemName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+ 
+    
 }

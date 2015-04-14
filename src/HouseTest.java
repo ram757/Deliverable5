@@ -231,6 +231,49 @@ public class HouseTest
         assertNull(returnedItem);
     }
     
+    @Test
+    /*
+     * Test that the correctly supplied item can be used 
+     * in this particular room
+     */
+    public void testCanUseItemHereWithExistingItem()
+    {
+        String itemUsableHere = "cats";
+        House house = new House(gameboard);
+        
+        boolean returnedValue = house.canUseItemHere(itemUsableHere);
+        
+        assertTrue(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that an incorrectly supplied item cannot be used 
+     * in this particular room
+     */
+    public void testCanUseItemHereWithNonExistingItem()
+    {
+        String itemUnusableHere = "dogs";
+        House house = new House(gameboard);
+        
+        boolean returnedValue = house.canUseItemHere(itemUnusableHere);
+        
+        assertFalse(returnedValue);
+    }
+    
+    @Test
+    /*
+     * Test that an item is unfindable in a null room
+     */
+    public void testCanUseItemHereInNullRoom()
+    {
+        String itemUnfindable = "chickens";
+        House house = new House(nullGameboard);
+        
+        boolean returnedValue = house.canUseItemHere(itemUnfindable);
+        
+        assertFalse(returnedValue);
+    }
     
     
 }
