@@ -1,4 +1,5 @@
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,4 +32,79 @@ public class GameTest
         assertNotNull(game);
     }
 
+    @Test
+    /*
+     * Test that moving North in game successfully operates with 
+     * proper input in that it will call the appropriate method
+     */
+    public void testGameMoveNorth()
+    {
+        when(mockHouse.moveNorth()).thenReturn(true);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "north";
+        
+        int expectedValue = 1;
+        int returnValue = game.move(direction);
+        
+        Mockito.verify(mockHouse).moveNorth();
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    @Test
+    /*
+     * Test that moving South in game successfully operates with 
+     * proper input in that it will call the appropriate method
+     */
+    public void testGameMoveSouth()
+    {
+        when(mockHouse.moveSouth()).thenReturn(true);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "south";
+        
+        int expectedValue = 1;
+        int returnValue = game.move(direction);
+        
+        Mockito.verify(mockHouse).moveSouth();
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    @Test
+    /*
+     * Test that moving West in game successfully operates with 
+     * proper input in that it will call the appropriate method
+     */
+    public void testGameMoveWest()
+    {
+        when(mockHouse.moveWest()).thenReturn(true);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "west";
+        
+        int expectedValue = 1;
+        int returnValue = game.move(direction);
+        
+        Mockito.verify(mockHouse).moveWest();
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    @Test
+    /*
+     * Test that moving East in game successfully operates with 
+     * proper input in that it will call the appropriate method
+     */
+    public void testGameMoveEast()
+    {
+        when(mockHouse.moveEast()).thenReturn(true);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "east";
+        
+        int expectedValue = 1;
+        int returnValue = game.move(direction);
+        
+        Mockito.verify(mockHouse).moveEast();
+        assertTrue(expectedValue == returnValue);
+    }
 }
