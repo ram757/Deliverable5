@@ -3,7 +3,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/* ItemTest Class
+ *     Test cases used to develop the Test Class through TDD
+ */
 public class ItemTest
 {
     String name;
@@ -19,6 +21,9 @@ public class ItemTest
     }
     
     @Test
+    /*
+     * Test that Item object can be created appropriately
+     */
     public void testItemConstructor()
     {
         Item item = new Item(name, description, usage);
@@ -26,6 +31,9 @@ public class ItemTest
     }
     
     @Test
+    /*
+     * Tests that an item can be converted to a String
+     */
     public void testItemToString()
     {
         Item item = new Item(name, description, usage);
@@ -36,6 +44,10 @@ public class ItemTest
     }
     
     @Test 
+    /*
+     * Tests that created item has correct name by testing the
+     * getName() method
+     */
     public void testGetName()
     {
         Item item = new Item(name, description, usage);
@@ -46,6 +58,10 @@ public class ItemTest
     }
     
     @Test
+    /*
+     * Tests findItem() method to verify it returns the 
+     * description of item
+     */
     public void testFindItem()
     {
         Item item = new Item(name, description, usage);
@@ -56,6 +72,10 @@ public class ItemTest
     }
     
     @Test
+    /*
+     * Test useItem() method to verify that it produces the 
+     * correct return value
+     */
     public void testUseItem()
     {
         Item item = new Item(name, description, usage);
