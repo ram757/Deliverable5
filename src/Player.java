@@ -26,6 +26,18 @@ public class Player
         }
         return false;
     }
-
+    
+    public Item useItem(String itemName)
+    {
+        for(Item item : _inventory)
+        {
+            if(itemName.equalsIgnoreCase(item.getName()))
+            {
+                _inventory.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
     
 }

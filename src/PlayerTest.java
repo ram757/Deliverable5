@@ -92,6 +92,59 @@ public class PlayerTest
         assertFalse(player.hasItem(itemString3));
     }
     
-    
+    @Test
+    public void testUseItemWithEmptyInventory()
+    {
+        String someItem = "dog bowl";
+        
+        Player player = new Player();
 
+        Item returnedItem = player.useItem(someItem);
+        
+        assertNull(returnedItem);
+    }
+    
+    @Test
+    public void testUseItemWithItemNotInInventory()
+    {
+        String itemString1 = "Aloe Fresh Lotion";
+        String itemString2 = "Jelly Beans";
+        String itemString3 = "cats";
+        
+        when(mockItem1.getName()).thenReturn(itemString1);
+        when(mockItem2.getName()).thenReturn(itemString2);
+        
+        Player player = new Player();
+        player.addToInventory(mockItem1);
+        player.addToInventory(mockItem2);
+        
+        Item returnedItem = player.useItem(itemString3);
+        
+        assertNull(returnedItem);
+    }
+    
+    @Test
+    public void testUseItemWithItemInInventory()
+    {
+        String itemString1 = "Aloe Fresh Lotion";
+        String itemString2 = "Jelly Beans";
+        
+        when(mockItem1.getName()).thenReturn(itemString1);
+        when(mockItem2.getName()).thenReturn(itemString2);
+        
+        Player player = new Player();
+        player.addToInventory(mockItem1);
+        player.addToInventory(mockItem2);
+        
+        //Finds item and should remove from inventory
+        Item returnedItem = player.useItem(itemString2);
+        
+        assertNotNull(returnedItem);
+        
+        //Item should no longer be in inventory 
+        returnedItem = player.useItem(itemString2);
+        
+        assertNull(returnedItem);
+    }
+    
 }
