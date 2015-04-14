@@ -22,6 +22,16 @@ public class House
         _endRow = endRow;
         _endCol = endCol;
     }
+    
+    public String getCurrentRoomInfo()
+    {
+        if(_floorPlan[_rowLoc][_colLoc] == null)
+        {
+            return "Somehow you worked your way through a portal to hell.  Goodluck getting out.";
+        }
+        
+        return _floorPlan[_rowLoc][_colLoc].getRoomInfo();
+    }
  
     
 }

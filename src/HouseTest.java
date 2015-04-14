@@ -83,6 +83,31 @@ public class HouseTest
         assertNotNull(house);
     }
     
-    
+    @Test
+    public void testHouseGetCurrentRoomInfoOrigin()
+    {
+        House house = new House(gameboard);
+        
+        String expectedString = roomInfo + "00";
+        String returnedString = house.getCurrentRoomInfo();
+        
+        assertEquals(expectedString, returnedString);
+    }
 
+    @Test
+    public void testHouseGetCurrentRoomInfoAtPoint()
+    {
+        int row = 3;
+        int col = 3;
+        
+        House house = new House(gameboard, row, col, 0, 0);
+        
+        String expectedString = roomInfo + row + col;
+        String returnedString = house.getCurrentRoomInfo();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    
+    
 }
