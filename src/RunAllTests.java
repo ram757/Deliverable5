@@ -4,8 +4,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TrapTest.class, ItemTest.class, PlayerTest.class, 
-                RoomTest.class, HouseTest.class })
+@SuiteClasses({ EscapeTheGameTest.class, ItemTest.class, TrapTest.class, 
+                RoomTest.class, HouseTest.class, PlayerTest.class})
 
 public class RunAllTests
 {
