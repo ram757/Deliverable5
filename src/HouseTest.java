@@ -9,8 +9,13 @@ import org.mockito.MockitoAnnotations;
 
 public class HouseTest
 {
-
+    //Declarations of variables to be used in class
     Room[][] gameboard;
+    Room[][] nullGameboard;
+    
+    Trap trap;
+    Item item;
+    
     int numOfRows;
     int numOfCols;
     int startRow;
@@ -19,17 +24,20 @@ public class HouseTest
     int endCol;
     
     String roomInfo;
-    Trap trap;
-    Item item;
     String itemUsable;
     String peekInfo;
     
     @Before
+    /*
+     * Set up all dependencies so pre-determined output can be properly predicted
+     */
     public void setUp()
     {
         //Initialize default values
         numOfRows = 5;
         numOfCols = 5;
+        gameboard = new Room[numOfRows][numOfCols];
+        nullGameboard = new Room[numOfRows][numOfCols];
         startRow = 0;
         startCol = 0;
         endRow = 4;
@@ -68,6 +76,9 @@ public class HouseTest
     
     
     @Test
+    /*
+     * Test constructor given just a matrix of Room[][]
+     */
     public void testHouseConstructorGivenBoard()
     {
         House house = new House(gameboard);
@@ -76,6 +87,9 @@ public class HouseTest
     }
     
     @Test
+    /*
+     * Test constructor given matrix, start points and end points
+     */
     public void testHouseConstructorGivenBoardAndExtraInfo()
     {
         House house = new House(gameboard, startRow, startCol, endRow, endCol);
@@ -84,6 +98,10 @@ public class HouseTest
     }
     
     @Test
+    /*
+     * Test that getCurrentRoomInfo() will return the proper information 
+     * when called at the origin
+     */
     public void testHouseGetCurrentRoomInfoOrigin()
     {
         House house = new House(gameboard);
@@ -95,6 +113,11 @@ public class HouseTest
     }
 
     @Test
+    /*
+     * Test that the current room info at point outside of origin
+     * will return proper information when getCurrentRoomInfo() is
+     * called
+     */
     public void testHouseGetCurrentRoomInfoAtPoint()
     {
         int row = 3;
@@ -108,6 +131,16 @@ public class HouseTest
         assertEquals(expectedString, returnedString);
     }
     
-    
+    @Test
+    /*
+     * Test that the House of null rooms returns null when trying
+     * to get room information
+     */
+    public void testHouseGetCurrentRoomInfoAtNull()
+    {
+        House house = new House(nullGameboard);
+        
+        assertNull(house.getCurrentRoomInfo());
+    }
     
 }
