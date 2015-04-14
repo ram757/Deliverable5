@@ -9,4 +9,19 @@ public class House
     private int _endCol = 0;
     
 
+    public House(Room[][] board)
+    {
+        _floorPlan = board;
+    }
+    
+    public House(Room[][] board, int startRow, int startCol, int endRow, int endCol)
+    {
+        _floorPlan = board;
+        _rowLoc = startRow;
+        _colLoc = startCol;
+        _endRow = endRow;
+        _endCol = endCol;
+    }
+ 
+    
 }

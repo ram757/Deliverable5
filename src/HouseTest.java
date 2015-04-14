@@ -11,12 +11,23 @@ public class HouseTest
 {
 
     Room[][] gameboard;
-    int numOfRows = 5;
-    int numOfCols = 5;
+    int numOfRows;
+    int numOfCols;
+    int startRow;
+    int startCol;
+    int endRow;
+    int endCol;
     
     @Before
     public void setUp()
     {
+        numOfRows = 5;
+        numOfCols = 5;
+        startRow = 0;
+        startCol = 0;
+        endRow = 4;
+        endCol = 4;
+        
         for(int i = 0; i < numOfRows; i++)
         {
             for(int j = 0 ; j < numOfCols; j++)
@@ -31,7 +42,19 @@ public class HouseTest
     @Test
     public void testHouseConstructorGivenBoard()
     {
-        fail("Not yet implemented");
+        House house = new House(gameboard);
+        
+        assertNotNull(house);
     }
+    
+    @Test
+    public void testHouseConstructorGivenBoardAndExtraInfo()
+    {
+        House house = new House(gameboard, startRow, startCol, endRow, endCol);
+        
+        assertNotNull(house);
+    }
+    
+    
 
 }
