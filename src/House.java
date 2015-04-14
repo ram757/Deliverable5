@@ -197,7 +197,29 @@ public class House
         }
         return false;
     }
-
+    
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder("");
+        
+        for(int i = 0; i < _floorPlan.length; i++)
+        {
+            for(int j = 0; j < _floorPlan[i].length; j++)
+            {
+                if(_floorPlan[i][j] == null)
+                {
+                    sb.append("Location: row-" + i + " col-" + j + "\n");
+                    sb.append("\tEmpty\n");
+                }
+                else
+                {
+                    sb.append("Location: row-" + i + " col-" + j + "\n");
+                    sb.append(_floorPlan[i][j].toString() + "\n");
+                }
+            }
+        }
+        return sb.toString();
+    }
 
     public String printFloorPlan()
     {

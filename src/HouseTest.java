@@ -66,7 +66,16 @@ public class HouseTest
                 MockitoAnnotations.initMocks(gameboard[i][j]);
                 when(gameboard[i][j].getRoomInfo()).thenReturn(roomInfo + i + j);
                 when(gameboard[i][j].getTrap()).thenReturn(trap);
-                when(gameboard[i][j].hasTrap()).thenReturn(true);
+                
+                if(i ==4 && j == 2)//Trap here will be false
+                {
+                    when(gameboard[i][j].hasTrap()).thenReturn(false);
+                }
+                else
+                {
+                    when(gameboard[i][j].hasTrap()).thenReturn(true);
+                }
+
                 when(gameboard[i][j].getItem()).thenReturn(item);
                 when(gameboard[i][j].hasItem()).thenReturn(true);
                 when(gameboard[i][j].getItemUsable()).thenReturn(itemUsable);
@@ -160,6 +169,19 @@ public class HouseTest
         Trap returnedTrap = house.hasFallenIntoTrap();
         
         assertNotNull(returnedTrap);
+    }
+    
+    @Test
+    /*
+     * Make sure that hasFallenIntoTrap() will return null if no Trap
+     */
+    public void testHouseHasFallenIntoTrapNoTrap()
+    {
+        House house = new House(gameboard, 4, 2, endRow, endCol);
+        
+        Trap returnedTrap = house.hasFallenIntoTrap();
+        
+        assertNull(returnedTrap);
     }
     
     @Test
@@ -649,4 +671,51 @@ public class HouseTest
         assertEquals(expectedString.toString(), returnedString);
     }
     
+    @Test
+    /*
+     * Test that a house full of Rooms will produce the expected String
+     */
+    public void testHouseToStringFullHouse()
+    {
+        House house = new House(gameboard);
+        StringBuilder expectedString = new StringBuilder("");
+        
+        //Build expected string
+        for(int i = 0; i < numOfRows; i++)
+        {
+            for(int j = 0; j < numOfCols; j++)
+            {
+                expectedString.append("Location: row-" + i + " col-" + j + "\n");
+                expectedString.append(gameboard[i][j].toString() + "\n");
+            }
+        }
+        
+        String returnedString = house.toString();
+        
+        assertEquals(expectedString.toString(), returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that a house with null Rooms will produce the expected String
+     */
+    public void testHouseToStringEmptyHouse()
+    {
+        House house = new House(nullGameboard);
+        StringBuilder expectedString = new StringBuilder("");
+        
+        //Build expected string
+        for(int i = 0; i < numOfRows; i++)
+        {
+            for(int j = 0; j < numOfCols; j++)
+            {
+                expectedString.append("Location: row-" + i + " col-" + j + "\n");
+                expectedString.append("\tEmpty\n");
+            }
+        }
+        
+        String returnedString = house.toString();
+        
+        assertEquals(expectedString.toString(), returnedString);
+    }
 }
