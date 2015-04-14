@@ -3,7 +3,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/* TrapTest Class
+ *     Test cases used to develop the Test Class through TDD
+ */
 public class TrapTest
 {
     String description;
@@ -16,6 +18,9 @@ public class TrapTest
     }
     
     @Test
+    /*
+     * Test that constructor works just given a description
+     */
     public void testConstructorWithDescription()
     {
         Trap trap = new Trap(description);
@@ -23,6 +28,9 @@ public class TrapTest
     }
     
     @Test
+    /*
+     * Test that constructor works with description and escape
+     */
     public void testConstructorWithDescAndEscape()
     {
         boolean escape = true;
@@ -31,6 +39,10 @@ public class TrapTest
     }
     
     @Test
+    /*
+     * Test getTrapInfo() method and verify that it produces the 
+     * correct response
+     */
     public void testGetTrapInfo()
     {
         Trap trap = new Trap(description);
@@ -41,6 +53,10 @@ public class TrapTest
     }
     
     @Test
+    /*
+     * Test canEscape() method and verify that it produces the 
+     * correct response
+     */
     public void testCanEscape()
     {
         boolean expectedReturn = true;
@@ -51,6 +67,10 @@ public class TrapTest
     }
     
     @Test
+    /*
+     * Test an escapable trap's toString() method and verify the 
+     * correct response is produced
+     */
     public void testEscapableTrapToString()
     {
         Trap trap = new Trap(description, true);
@@ -61,6 +81,10 @@ public class TrapTest
     }
     
     @Test
+    /*
+     * Test a NOT escapable trap's toString() method and verify the 
+     * correct response is produced
+     */
     public void testNotEscapableTrapToString()
     {
         Trap trap = new Trap(description, false);
