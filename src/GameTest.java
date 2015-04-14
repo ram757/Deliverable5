@@ -107,4 +107,41 @@ public class GameTest
         Mockito.verify(mockHouse).moveEast();
         assertTrue(expectedValue == returnValue);
     }
+    
+    @Test
+    /*
+     * Test that moving to wrong direction in game successfully operates with 
+     * proper input in that it will fail to work and produce error code
+     */
+    public void testGameMoveNowhere()
+    {
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "nowhere";
+        
+        int expectedValue = -1;
+        int returnValue = game.move(direction);
+        
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    @Test
+    /*
+     * Test that moving to wrong direction in game successfully operates with 
+     * proper input in that it will fail to work and produce error code
+     */
+    public void testGameMoveEastFail()
+    {
+        when(mockHouse.moveEast()).thenReturn(false);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "east";
+        
+        int expectedValue = -1;
+        int returnValue = game.move(direction);
+        
+        Mockito.verify(mockHouse).moveEast();
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    
 }
