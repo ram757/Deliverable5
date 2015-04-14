@@ -64,6 +64,83 @@ public class RoomTest
     }
     
     @Test
+    public void testRoomGetExistingItemOnce()
+    {
+        String itemString = "cats";
+        when(mockItem.toString()).thenReturn(itemString);
+        
+        Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
+        
+        Item returnedItem = room.getItem();
+        assertEquals(mockItem, returnedItem);
+        assertEquals(itemString, returnedItem.toString());
+    }
+    
+    @Test
+    public void testRoomGetExistingItemTwice()
+    {
+        String itemString = "cats";
+        when(mockItem.toString()).thenReturn(itemString);
+        
+        Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
+        
+        Item returnedItem = room.getItem();
+        assertEquals(mockItem, returnedItem);
+
+        returnedItem = room.getItem();
+        assertTrue(returnedItem == null);
+    }
+    
+    @Test
+    public void testRoomGetItemUsable()
+    {
+        Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
+        
+        String expectedString = itemUsable;
+        String returnedString = room.getItemUsable();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    public void testRoomWithTrapGetTrap()
+    {
+        Room room = new Room(description, peekDescription, mockItem, mockTrap, itemUsable);
+
+        assertEquals(mockTrap, room.getTrap());
+    }
+    
+    @Test
+    public void testRoomWithoutTrapGetTrap()
+    {
+        Room room = new Room(description, peekDescription);
+
+        assertEquals(null, room.getTrap());
+    }
+    
+    @Test
+    public void testRoomGetRoomInfo()
+    {
+        Room room = new Room(description, peekDescription);
+        
+        String expectedString = description;
+        String returnedString = room.getRoomInfo();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    public void testRoomPeekInRoom()
+    {
+        Room room = new Room(description, peekDescription);
+        
+        String expectedString = peekDescription;
+        String returnedString = room.peekInRoom();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
     public void testRoomToStringWithoutItemAndTrap()
     {
         String trapString = "Eaten by cats";

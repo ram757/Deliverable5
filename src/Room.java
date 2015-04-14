@@ -49,7 +49,37 @@ public class Room
     {
         return _hasTrap;
     }
-  
+    
+    public Item getItem()
+    {
+        if(_hasItem)
+        {
+            _hasItem = false;
+            return _item;
+        }
+        return null;
+    }
+    
+    public String getItemUsable()
+    {
+        return _itemUsable;
+    }
+    
+    public Trap getTrap()
+    {
+        return _trap;
+    }
+    
+    public String getRoomInfo()
+    {
+        return _roomDescription;
+    }
+    
+    public String peekInRoom()
+    {
+        return _peekDescription;
+    }
+    
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
