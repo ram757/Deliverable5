@@ -143,9 +143,6 @@ public class RoomTest
     @Test
     public void testRoomToStringWithoutItemAndTrap()
     {
-        String trapString = "Eaten by cats";
-        String itemString = "unicycle";
-        
         Room room = new Room(description, peekDescription);
         
         String expectedString = ("Room:\n\tDescription: " + description);
