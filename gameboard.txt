@@ -1,0 +1,46 @@
+Dimensions: 8;8
+Start: 0;0
+End: 3;1
+-
+Location: 0;0
+Description: You're in a room...
+Peek: The basement
+Trap: none
+Find: none
+Use: none
+-
+Location: 0;1
+Description: You're in a stinky room...
+Peek: The first room
+Trap: none
+Find: none
+Use: none
+-
+Location: 1;1
+Description: You're in an ugly room...
+Peek: The second room
+Trap: none
+Find: none
+Use: none
+-
+Location: 2;1
+Description: You're in a dumb room...
+Peek: You're in the fourth room and shit
+Trap: none
+Find: key;description about finding key;description when key is used
+Use: none
+-
+Location: 2;0
+Description: You're in a dumb room...
+Peek: From outside of the door, you can hear sorority girls.
+Trap: dead;You encounter a hoard of sorority chicks... 
+Find: none
+Use: none
+-
+Location: 3;1
+Description: You're in a dumb room...
+Peek: You're in the fourth room and shit
+Trap: none
+Find: none
+Use: key
+-
