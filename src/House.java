@@ -81,5 +81,16 @@ public class House
         sb.append(".");
         return sb.toString();
     }
+    
+    public Item lookInCurrentRoom()
+    {
+        if(_floorPlan[_rowLoc][_colLoc] != null && _floorPlan[_rowLoc][_colLoc].hasItem())
+        {
+            return _floorPlan[_rowLoc][_colLoc].getItem();
+        }
+        
+        return null;
+    }
+    
 
 }

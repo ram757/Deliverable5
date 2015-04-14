@@ -205,5 +205,32 @@ public class HouseTest
         assertEquals(expectedString, returnedString);
     }
     
+    @Test
+    /*
+     * Test that lookInCurrentRoom() works with room that has Item
+     */
+    public void testLookInCurrentRoomWithItem()
+    {
+        House house = new House(gameboard);
+        
+        Item returnedItem = house.lookInCurrentRoom();
+        
+        assertNotNull(returnedItem);
+    }
+    
+    @Test
+    /*
+     * Test that lookInCurrentRoom() returns null when room itself is null
+     */
+    public void testLookInCurrentRoomThatIsNull()
+    {
+        House house = new House(gameboard);
+        
+        Item returnedItem = house.lookInCurrentRoom();
+        
+        assertNull(returnedItem);
+    }
+    
+    
     
 }
