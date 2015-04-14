@@ -143,5 +143,98 @@ public class GameTest
         assertTrue(expectedValue == returnValue);
     }
     
+    @Test
+    /*
+     * Test that peeking north returns the correct response and 
+     * verify that it called the appropriate method
+     */
+    public void testGamePeekNorth()
+    {
+        String expectedString = "yay";
+        when(mockHouse.peekNorth()).thenReturn(expectedString);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "north";
+
+        String returnedString = game.peek(direction);
+        
+        Mockito.verify(mockHouse).peekNorth();
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peeking south returns the correct response and 
+     * verify that it called the appropriate method
+     */
+    public void testGamePeekSouth()
+    {
+        String expectedString = "yay";
+        when(mockHouse.peekSouth()).thenReturn(expectedString);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "south";
+
+        String returnedString = game.peek(direction);
+        
+        Mockito.verify(mockHouse).peekSouth();
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that peeking north returns the correct response and 
+     * verify that it called the appropriate method
+     */
+    public void testGamePeekEast()
+    {
+        String expectedString = "yay";
+        when(mockHouse.peekEast()).thenReturn(expectedString);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "east";
+
+        String returnedString = game.peek(direction);
+        
+        Mockito.verify(mockHouse).peekEast();
+        assertEquals(expectedString, returnedString);
+    }
+    
+    
+    @Test
+    /*
+     * Test that peeking west returns the correct response and 
+     * verify that it called the appropriate method
+     */
+    public void testGamePeekWest()
+    {
+        String expectedString = "yay";
+        when(mockHouse.peekWest()).thenReturn(expectedString);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "west";
+
+        String returnedString = game.peek(direction);
+        
+        Mockito.verify(mockHouse).peekWest();
+        assertEquals(expectedString, returnedString);
+    }
+    
+    
+    @Test
+    /*
+     * Test that peeking incorrectly returns the correct response
+     */
+    public void testGamePeekNowhere()
+    {
+        String expectedStringContent = "You see a wall that is disturbingly";
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        String direction = "nowhere";
+
+        String returnedString = game.peek(direction);
+
+        assertTrue(returnedString.contains(expectedStringContent));
+    }
     
 }

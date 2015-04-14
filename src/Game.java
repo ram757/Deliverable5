@@ -15,8 +15,7 @@ public class Game
         _player = p;
         _house = h;
     }
- 
-    
+
     public int move(String direction)
     {
         boolean moveResponse = false;
@@ -53,6 +52,37 @@ public class Game
             return 1;
         }
     }
+    
+    public String peek(String direction)
+    {
+        String peekResponse = null;
+        
+        if(direction.equals("north"))
+        {
+            peekResponse = _house.peekNorth();
+        }
+        else if(direction.equals("south"))
+        {
+            peekResponse = _house.peekSouth();
+        }
+        else if(direction.equals("east"))
+        {
+            peekResponse = _house.peekEast();
+        }
+        else if(direction.equals("west"))
+        {
+            peekResponse =_house.peekWest();
+        }
+        else
+        {
+            Random r = new Random();
+            
+            peekResponse = ("You see a wall that is disturbingly " + EscapeTheGame.adjs[r.nextInt(EscapeTheGame.adjs.length)]);
+        }
+        
+        return peekResponse;        
+    }
 
+    
     
 }
