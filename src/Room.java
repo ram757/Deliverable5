@@ -39,7 +39,17 @@ public class Room
         _hasItem = false;
         _itemUsable = null;
     }
-
+    
+    public boolean hasItem()
+    {
+        return _hasItem;
+    }
+    
+    public boolean hasTrap()
+    {
+        return _hasTrap;
+    }
+  
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
