@@ -16,6 +16,7 @@ public class Game
         _house = h;
     }
 
+    
     public int move(String direction)
     {
         boolean moveResponse = false;
@@ -82,7 +83,46 @@ public class Game
         
         return peekResponse;        
     }
-
+    
+    public int look()
+    {
+        Item item = _house.lookInCurrentRoom();
+        if(item != null)
+        {
+            _player.addToInventory(item);
+            System.out.println("You found "+ item.getName());
+            return 3;
+        }
+        else
+        {
+            System.out.println("You found nothing helpful.");
+            return -3;
+        }
+    }
+    
+    public int use(String itemName)
+    {
+        if(_player.hasItem(itemName))
+        {
+            if(_house.canUseItemHere(itemName))
+            {
+                Item itemUsed = _player.useItem(itemName);
+                
+                System.out.println(itemUsed.useItem());
+                return 4;
+            }
+            else
+            {
+                System.out.println("You find no meaningful way to use that here...");
+                return -4;
+            }
+        }
+        else
+        {
+            System.out.println("You have no such item...");
+            return -4;
+        }
+    }
     
     
 }

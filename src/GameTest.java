@@ -237,4 +237,116 @@ public class GameTest
         assertTrue(returnedString.contains(expectedStringContent));
     }
     
+    @Test
+    /*
+     * Test that looking in game successfully operates with 
+     * item in location it will call the appropriate methods
+     */
+    public void testLookWithItemInRoom()
+    {
+        String item = "cats";
+        Item mockItem = Mockito.mock(Item.class);
+        when(mockItem.getName()).thenReturn(item);
+        
+        when(mockHouse.lookInCurrentRoom()).thenReturn(mockItem);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        
+        int expectedValue = 3;
+        int returnValue = game.look();
+        
+        Mockito.verify(mockHouse).lookInCurrentRoom();
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    @Test
+    /*
+     * Test that looking in game successfully operates with 
+     * no item in location it will call the appropriate methods
+     */
+    public void testLookWithNothingInRoom()
+    {
+        when(mockHouse.lookInCurrentRoom()).thenReturn(null);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        
+        int expectedValue = -3;
+        int returnValue = game.look();
+        
+        Mockito.verify(mockHouse).lookInCurrentRoom();
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    @Test
+    /*
+     * Test that using item successfully operates when
+     * player has item and they can also use that item 
+     * in that particular location
+     */
+    public void testUseWithItem()
+    {
+        String item = "cats";
+        Item mockItem = Mockito.mock(Item.class);
+        when(mockItem.getName()).thenReturn(item);
+        when(mockPlayer.hasItem(item)).thenReturn(true);
+        when(mockHouse.canUseItemHere(item)).thenReturn(true);
+        when(mockPlayer.useItem(item)).thenReturn(mockItem);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        
+        int expectedValue = 4;
+        int returnValue = game.use(item);
+        
+        Mockito.verify(mockPlayer).hasItem(item);
+        Mockito.verify(mockHouse).canUseItemHere(item);
+        Mockito.verify(mockPlayer).useItem(item);
+        
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    @Test
+    /*
+     * Test that using item successfully operates when
+     * player has item and they cannot use that item 
+     * in that particular location
+     */
+    public void testUseWithItemCannotUseHere()
+    {
+        String item = "cats";
+        when(mockPlayer.hasItem(item)).thenReturn(true);
+        when(mockHouse.canUseItemHere(item)).thenReturn(false);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        
+        int expectedValue = -4;
+        int returnValue = game.use(item);
+        
+        Mockito.verify(mockPlayer).hasItem(item);
+        Mockito.verify(mockHouse).canUseItemHere(item);
+        
+        assertTrue(expectedValue == returnValue);
+    }
+    
+    
+    @Test
+    /*
+     * Test that using item successfully operates when
+     * player has no item in inventory 
+     */
+    public void testUseWithNoItemInPlayerInventory()
+    {
+        String item = "cats";
+        
+        when(mockPlayer.hasItem(item)).thenReturn(true);
+        
+        Game game = new Game(mockPlayer, mockHouse);
+        
+        int expectedValue = -4;
+        int returnValue = game.use(item);
+        
+        Mockito.verify(mockPlayer).hasItem(item);
+        
+        assertTrue(expectedValue == returnValue);
+    }
+    
 }
