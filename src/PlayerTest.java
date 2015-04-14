@@ -7,7 +7,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-
+/* PlayerTest Class
+ *     Test cases used to develop the Player Class through TDD
+ */
 public class PlayerTest
 {
     @Mock
@@ -22,6 +24,9 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the constructor and verify it produces a Player
+     */
     public void testPlayerConstructor()
     {
         Player player = new Player();
@@ -30,6 +35,10 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the addToInventory() method by adding one item and verify 
+     * that the expected result is returned
+     */
     public void testAddOneItemToInventory()
     {
         Player player = new Player();
@@ -38,6 +47,10 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the addToInventory() method by adding multiple items and 
+     * verify that the expected results are produced with each add
+     */
     public void testAddMultipleItemToInventory()
     {
         Player player = new Player();
@@ -47,6 +60,11 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the hasItem() method given that the item exists in 
+     * the Players inventory and verify that the correct response 
+     * is produced
+     */
     public void testHasItemWithExistingItems()
     {
         String itemString1 = "Aloe Fresh Lotion";
@@ -64,6 +82,10 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the hasItem() method given that the Player an empty 
+     * inventory and verify that the correct results are produced
+     */
     public void testHasItemWithEmptyInventory()
     {
         String itemString1 = "Aloe Fresh Lotion";
@@ -76,6 +98,11 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the hasItem() method given that the Player has items 
+     * in their inventory but not the specified item and verify 
+     * that the correct results are produced
+     */
     public void testHasItemWithoutItemInInventory()
     {
         String itemString1 = "Aloe Fresh Lotion";
@@ -93,6 +120,10 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the useItem() method given that the Player's inventory 
+     * is empty and verify the correct result is produced
+     */
     public void testUseItemWithEmptyInventory()
     {
         String someItem = "dog bowl";
@@ -105,6 +136,11 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the useItem() method when the specified item is not 
+     * in the Player's inventory and verify that the correct 
+     * results are produced
+     */
     public void testUseItemWithItemNotInInventory()
     {
         String itemString1 = "Aloe Fresh Lotion";
@@ -124,6 +160,11 @@ public class PlayerTest
     }
     
     @Test
+    /*
+     * Test the useItem() method given that the Player has the 
+     * specified item in their inventory and verify that the 
+     * correct results are produced
+     */
     public void testUseItemWithItemInInventory()
     {
         String itemString1 = "Aloe Fresh Lotion";
