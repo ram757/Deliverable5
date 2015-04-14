@@ -1,15 +1,34 @@
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 
 public class GameTest
 {
-
-    @Test
-    public void test()
+    @Mock
+    Player mockPlayer = Mockito.mock(Player.class);
+    House mockHouse = Mockito.mock(House.class);
+    
+    @Before
+    public void setUp() throws Exception
     {
-        fail("Not yet implemented");
+        MockitoAnnotations.initMocks(mockPlayer);
+        MockitoAnnotations.initMocks(mockHouse);
+    }
+    
+    @Test
+    /*
+     * Test that Game constructor works properly
+     */
+    public void testGameConstructor()
+    {
+        Game game = new Game(mockPlayer, mockHouse);
+        
+        assertNotNull(game);
     }
 
 }
