@@ -143,4 +143,67 @@ public class HouseTest
         assertNull(house.getCurrentRoomInfo());
     }
     
+    @Test
+    /*
+     * Make sure that hasFallenIntoTrap() will return the mocked Trap
+     */
+    public void testHouseHasFallenIntoTrap()
+    {
+        House house = new House(gameboard);
+        
+        Trap returnedTrap = house.hasFallenIntoTrap();
+        
+        assertNotNull(returnedTrap);
+    }
+    
+    @Test
+    /*
+     * Test getSurroundingsInfo() from the origin to verify correct 
+     * return String
+     */
+    public void testGetSurroundingsInfoFromOrigin()
+    {
+        House house = new House(gameboard, startRow, startCol, endRow, endCol);
+        
+        String expectedString = "You see a door: [south][east].";
+        String returnedString = house.getSurroundingsInfo();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    /*
+     * Test getSurroundingsInfo() from the point in middle of matrix 
+     *  to verify correct return String
+     */
+    public void testGetSurroundingsInfoFromMiddlePoint()
+    {
+        int row = 2;
+        int col = 2;
+        House house = new House(gameboard, row, col, endRow, endCol);
+        
+        String expectedString = "You see a door: [south][north][east][west].";
+        String returnedString = house.getSurroundingsInfo();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    @Test
+    /*
+     * Test getSurroundingsInfo() in cell surrounded by null to verify correct
+     * return String
+     */
+    public void testGetSurroundingsInfoFromRoomSurroundedByNull()
+    {
+        int row = 2;
+        int col = 2;
+        House house = new House(nullGameboard, row, col, endRow, endCol);
+        
+        String expectedString = "You see a door: NOWHERE... You're screwed.";
+        String returnedString = house.getSurroundingsInfo();
+        
+        assertEquals(expectedString, returnedString);
+    }
+    
+    
 }

@@ -32,6 +32,54 @@ public class House
         
         return _floorPlan[_rowLoc][_colLoc].getRoomInfo();
     }
- 
     
+    public Trap hasFallenIntoTrap()
+    {
+        Room currentRoom = _floorPlan[_rowLoc][_colLoc];
+        if(currentRoom.hasTrap())
+        {
+            return currentRoom.getTrap();
+        }
+        
+        return null;
+    }
+    
+    
+    public String getSurroundingsInfo()
+    {
+        boolean north = _rowLoc - 1 >= 0 && _floorPlan[_rowLoc - 1][_colLoc] != null;
+        boolean south = _rowLoc + 1 < _floorPlan.length && _floorPlan[_rowLoc + 1][_colLoc] != null;
+        boolean east = _colLoc + 1 < _floorPlan[_rowLoc].length && _floorPlan[_rowLoc][_colLoc + 1] != null;
+        boolean west = _colLoc - 1 >= 0 && _floorPlan[_rowLoc][_colLoc - 1] != null;
+        
+        StringBuilder sb = new StringBuilder("");
+        sb.append("You see a door: ");
+        if(!(north || south || east || west))
+        {
+            sb.append("NOWHERE... You're screwed");
+        }
+        else
+        {
+            if(south)
+            {
+                sb.append("[south]");
+            }
+            if(north)
+            {
+                sb.append("[north]");
+            }
+            if(east)
+            {
+                sb.append("[east]");
+            }
+            if(west)
+            {
+                sb.append("[west]");
+            }
+        }
+        
+        sb.append(".");
+        return sb.toString();
+    }
+
 }
