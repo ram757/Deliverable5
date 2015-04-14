@@ -197,6 +197,30 @@ public class House
         }
         return false;
     }
- 
+
+
+    public String printFloorPlan()
+    {
+        StringBuilder sb = new StringBuilder("");
+        
+        for(int i = 0; i < _floorPlan.length; i++)
+        {
+            for(int j = 0; j < _floorPlan[i].length; j++)
+            {
+                if(_floorPlan[i][j] == null)
+                {
+                    sb.append("o");
+                }
+                else
+                {
+                    sb.append("x");
+                }
+            }
+            sb.append("\n");
+        }
+        
+        return sb.toString();
+    }
+    
     
 }

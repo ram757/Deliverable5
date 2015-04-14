@@ -585,4 +585,68 @@ public class HouseTest
         assertTrue(returnedValue);
     }
     
+    @Test
+    /*
+     * Test that printing the floor plan produces the correct String
+     * when printing a full game board
+     */
+    public void testPrintFloorPlanFullMap()
+    {
+        House house = new House(gameboard);
+        StringBuilder expectedString = new StringBuilder("");
+        
+        //Build expected string
+        for(int i = 0; i < numOfRows; i++)
+        {
+            for(int j = 0; j < numOfCols; j++)
+            {
+                if(gameboard[i][j] == null)
+                {
+                    expectedString.append("o");
+                }
+                else
+                {
+                    expectedString.append("x");
+                }
+            }
+            expectedString.append("\n");
+        }
+        
+        String returnedString = house.printFloorPlan();
+        
+        assertEquals(expectedString.toString(), returnedString);
+    }
+    
+    @Test
+    /*
+     * Test that printing the floor plan produces the correct String
+     * when printing an empty game board
+     */
+    public void testPrintFloorPlanEmptyMap()
+    {
+        House house = new House(nullGameboard);
+        StringBuilder expectedString = new StringBuilder("");
+        
+        //Build expected string
+        for(int i = 0; i < numOfRows; i++)
+        {
+            for(int j = 0; j < numOfCols; j++)
+            {
+                if(nullGameboard[i][j] == null)
+                {
+                    expectedString.append("o");
+                }
+                else
+                {
+                    expectedString.append("x");
+                }
+            }
+            expectedString.append("\n");
+        }
+        
+        String returnedString = house.printFloorPlan();
+        
+        assertEquals(expectedString.toString(), returnedString);
+    }
+    
 }
